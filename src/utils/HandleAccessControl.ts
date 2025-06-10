@@ -13,6 +13,16 @@ class HandleAccessControl {
     }
   }
 
+  async verifyOwnerRole(payload: Partial<User>, companyId: number): Promise<void> {
+    const { role, id } = payload;
+
+    if (role !== Role.CompanyOwner) throw new ForbiddenException('Acesso não autorizado.');
+
+    const company = await this.prisma.company.findUnique({ where: { id: companyId } });
+
+    if (id !== company.userId) throw new ForbiddenException('Acesso não autorizado.');
+  }
+
   async verifyPermission(payload: Partial<User>, permission: string): Promise<void> {
     const { id } = payload;
 
