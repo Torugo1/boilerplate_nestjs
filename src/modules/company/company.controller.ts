@@ -31,7 +31,6 @@ import { IsPublic } from '../auth/decorators/is-public.decorator';
 export class CompanyController {
   constructor(private readonly _companyService: CompanyService) {}
 
-  @IsPublic()
   @Get()
   @ApiOperation({ summary: 'Rota que lista todas as empresas.' })
   @ApiInternalServerErrorResponse({ description: 'Erro interno no servidor.' })
@@ -39,7 +38,6 @@ export class CompanyController {
     return this._companyService.getAllCompanies();
   }
 
-  @IsPublic()
   @Get(':id')
   @ApiOperation({ summary: 'Rota que recupera uma empresa pelo ID.' })
   @ApiInternalServerErrorResponse({ description: 'Erro interno no servidor.' })

@@ -29,7 +29,6 @@ import { IsPublic } from '../auth/decorators/is-public.decorator';
 export class ProductController {
   constructor(private readonly _productService: ProductService) {}
 
-  @IsPublic()
   @Get()
   @ApiOperation({ summary: 'Rota que lista todos os produtos.' })
   @ApiInternalServerErrorResponse({ description: 'Erro interno no servidor.' })
@@ -37,7 +36,6 @@ export class ProductController {
     return this._productService.getAllProducts();
   }
 
-  @IsPublic()
   @Get(':id')
   @ApiOperation({ summary: 'Rota que recupera um produto pelo ID.' })
   @ApiInternalServerErrorResponse({ description: 'Erro interno no servidor.' })
