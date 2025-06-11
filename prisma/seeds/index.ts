@@ -12,8 +12,8 @@ async function main() {
   await seedAdmin(prisma);
   await seedUser(prisma);
   await seedText(prisma);
-  await seedCompanyOwner(prisma);
   await seedCompany(prisma);
+  await seedCompanyOwner(prisma);
   await seedProduct(prisma);
 }
 
